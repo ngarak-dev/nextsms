@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 
 class NextSMSCommand extends Command
 {
-    public $signature = 'laravel-nextsms';
+    public $signature = 'nextsms';
 
-    public $description = 'My command';
+    public $description = 'NextSMS Command';
 
     public function handle(): int
     {

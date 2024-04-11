@@ -23,11 +23,7 @@
         "phpunit/phpunit": "^10.5.10",
         "spatie/laravel-ray": "^1.36"
     },
-    "autoload": {
-        "psr-4": {
-            "NgarakDev\\Nextsms\\": "src/"
-        }
-    },
+
     "authors": [
         {
             "name": "Ngara K",
@@ -35,6 +31,7 @@
         }
     ],
     "minimum-stability": "stable",
+
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true,
@@ -42,7 +39,31 @@
         }
     },
 
+    "autoload": {
+        "psr-4": {
+            "NgarakDev\\NextSMS\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NgarakDev\\NextSMS\\Tests\\": "tests"
+        }
+    },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest coverage"
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NgarakDev\\NextSMS\\NextSMSServiceProvider"
+            ],
+            "aliases": {
+                "NextSMS": "NgarakDev\\NextSMS\\Facades\\NextSMS"
+            }
+        }
     }
+
 }
