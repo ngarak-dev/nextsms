@@ -1,8 +1,3 @@
-
-<p align="center">
-    <img src="/art/nextsms-logo.png" width="300" title="NextSMS Logo" alt="NextSMS Logo">
-</p>
-
 # NextSMS
 
 A Laravel package to send SMS using NextSMS API. Basically a folk from https://github.com/omakei with updated packages support for laravel 10 and 11
@@ -13,13 +8,7 @@ A Laravel package to send SMS using NextSMS API. Basically a folk from https://g
 You can install the package via composer:
 
 ```bash
-composer require ngarak-dev/laravel-nextsms
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="nextsms-config"
+composer require ngarak-dev/nextsms
 ```
 
 The following keys must be available in your `.env` file:
@@ -30,39 +19,13 @@ NEXTSMS_PASSWORD=
 NEXTSMS_SENDER_ID=
 ```
 
-This is the contents of the published `config` file:
-
-```php
-return [
-    'username' => env('NEXTSMS_USERNAME', 'NEXTSMS'),
-    'password' => env('NEXTSMS_PASSWORD', 'NEXTSMS'),
-    'api_key' => base64_encode(env('NEXTSMS_USERNAME', 'NEXTSMS').':'.env('NEXTSMS_PASSWORD', 'NEXTSMS')),
-    'sender_id' => env('NEXTSMS_SENDER_ID', 'NEXTSMS'),
-    'url' => [
-        'sms' => [
-            'single' => NextSMS::NEXTSMS_BASE_URL.'/api/sms/v1/text/single',
-            'multiple' => NextSMS::NEXTSMS_BASE_URL.'/api/sms/v1/text/multi',
-            'reports' => NextSMS::NEXTSMS_BASE_URL.'/api/sms/v1/reports',
-            'logs' => NextSMS::NEXTSMS_BASE_URL.'/api/sms/v1/logs',
-            'balance' => NextSMS::NEXTSMS_BASE_URL.'/api/sms/v1/balance',
-        ],
-        'sub_customer' => [
-            'create' => NextSMS::NEXTSMS_BASE_URL.'/api/reseller/v1/sub_customer/create',
-            'recharge' => NextSMS::NEXTSMS_BASE_URL.'/api/reseller/v1/sub_customer/recharge',
-            'deduct' => NextSMS::NEXTSMS_BASE_URL.'/api/reseller/v1/sub_customer/deduct',
-        ]
-    ],
-];
-```
-
 ## Usage
 
 ### Send SMS
 
-#### NB: Telephone Number Must Start with Valid Country Code. Example: 2556211111111
+#### NB: Telephone Number Must Start with Valid Country Code. Example: 255768491010
 
 Sending single sms to single destination:
-
 
 ```php
 
@@ -80,7 +43,7 @@ use NgarakDev\NextSMS\NextSMS;
 
 $response = NextSMS::sendSingleSMSToMultipleDestination([
             'to' => ['255000000000','255111111111'], 
-            'text' => 'Dj Helooooo.']);
+            'text' => 'Helooooo.']);
 
 ```
 
@@ -235,7 +198,3 @@ Please see [NextSMS Developer API](https://documenter.getpostman.com/view/468038
 ```bash
 composer test
 ```
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
